@@ -1,0 +1,38 @@
+Name:                   flask-app
+Namespace:              default
+CreationTimestamp:      Tue, 11 Mar 2025 20:56:35 +0500
+Labels:                 app=flask
+Annotations:            deployment.kubernetes.io/revision: 1
+Selector:               app=flask
+Replicas:               1 desired | 1 updated | 1 total | 1 available | 0 unavailable
+StrategyType:           RollingUpdate
+MinReadySeconds:        0
+RollingUpdateStrategy:  25% max unavailable, 25% max surge
+Pod Template:
+  Labels:  app=flask
+  Containers:
+   flask-container:
+    Image:      waqask4842/k8s-flask-app:v2
+    Port:       9090/TCP
+    Host Port:  0/TCP
+    Environment:
+      POSTGRES_DB:        <set to the key 'POSTGRES_DB' in secret 'postgres-secret'>           Optional: false
+      POSTGRES_USER:      <set to the key 'POSTGRES_USER' in secret 'postgres-secret'>         Optional: false
+      POSTGRES_PASSWORD:  <set to the key 'POSTGRES_PASSWORD' in secret 'postgres-secret'>     Optional: false
+      POSTGRES_HOST:      <set to the key 'POSTGRES_HOST' of config map 'postgres-configmap'>  Optional: false
+      POSTGRES_PORT:      <set to the key 'POSTGRES_PORT' of config map 'postgres-configmap'>  Optional: false
+    Mounts:               <none>
+  Volumes:                <none>
+  Node-Selectors:         <none>
+  Tolerations:            <none>
+Conditions:
+  Type           Status  Reason
+  ----           ------  ------
+  Available      True    MinimumReplicasAvailable
+  Progressing    True    NewReplicaSetAvailable
+OldReplicaSets:  <none>
+NewReplicaSet:   flask-app-5f66684dd (1/1 replicas created)
+Events:
+  Type    Reason             Age   From                   Message
+  ----    ------             ----  ----                   -------
+  Normal  ScalingReplicaSet  10m   deployment-controller  Scaled up replica set flask-app-5f66684dd from 0 to 1
