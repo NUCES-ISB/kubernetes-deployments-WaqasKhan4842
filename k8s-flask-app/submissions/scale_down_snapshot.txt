@@ -1,0 +1,26 @@
+NAME                                     READY   STATUS        RESTARTS      AGE
+pod/flask-app-5f66684dd-25z96            1/1     Running       0             12m
+pod/flask-app-5f66684dd-b858d            1/1     Terminating   0             107s
+pod/flask-app-5f66684dd-jnph4            1/1     Terminating   0             107s
+pod/mongo-deployment-7cccf8b6d8-xxjkx    1/1     Running       2 (17d ago)   17d
+pod/postgres-bff7ccd89-qkzm6             1/1     Running       0             27m
+pod/webapp-deployment-6bb4795f54-qm7jx   1/1     Running       1 (17d ago)   17d
+
+NAME                       TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)          AGE
+service/flask-service      NodePort    10.99.86.201    <none>        9090:30007/TCP   38m
+service/kubernetes         ClusterIP   10.96.0.1       <none>        443/TCP          17d
+service/mongo-service      ClusterIP   10.107.126.69   <none>        80/TCP           17d
+service/postgres-service   ClusterIP   None            <none>        5432/TCP         48m
+service/webapp-service     NodePort    10.105.196.64   <none>        3000:30100/TCP   17d
+
+NAME                                READY   UP-TO-DATE   AVAILABLE   AGE
+deployment.apps/flask-app           1/1     1            1           12m
+deployment.apps/mongo-deployment    1/1     1            1           17d
+deployment.apps/postgres            1/1     1            1           50m
+deployment.apps/webapp-deployment   1/1     1            1           17d
+
+NAME                                           DESIRED   CURRENT   READY   AGE
+replicaset.apps/flask-app-5f66684dd            1         1         1       12m
+replicaset.apps/mongo-deployment-7cccf8b6d8    1         1         1       17d
+replicaset.apps/postgres-bff7ccd89             1         1         1       50m
+replicaset.apps/webapp-deployment-6bb4795f54   1         1         1       17d

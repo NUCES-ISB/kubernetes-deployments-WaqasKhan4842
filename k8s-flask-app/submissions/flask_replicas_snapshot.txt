@@ -1,0 +1,16 @@
+      {"apiVersion":"apps/v1","kind":"Deployment","metadata":{"annotations":{},"labels":{"app":"flask"},"name":"flask-app","namespace":"default"},"spec":{"replicas":1,"selector":{"matchLabels":{"app":"flask"}},"template":{"metadata":{"labels":{"app":"flask"}},"spec":{"containers":[{"env":[{"name":"POSTGRES_DB","valueFrom":{"secretKeyRef":{"key":"POSTGRES_DB","name":"postgres-secret"}}},{"name":"POSTGRES_USER","valueFrom":{"secretKeyRef":{"key":"POSTGRES_USER","name":"postgres-secret"}}},{"name":"POSTGRES_PASSWORD","valueFrom":{"secretKeyRef":{"key":"POSTGRES_PASSWORD","name":"postgres-secret"}}},{"name":"POSTGRES_HOST","valueFrom":{"configMapKeyRef":{"key":"POSTGRES_HOST","name":"postgres-configmap"}}},{"name":"POSTGRES_PORT","valueFrom":{"configMapKeyRef":{"key":"POSTGRES_PORT","name":"postgres-configmap"}}}],"image":"waqask4842/k8s-flask-app:v2","name":"flask-container","ports":[{"containerPort":9090}]}]}}}}
+  creationTimestamp: "2025-03-11T15:56:35Z"
+  generation: 3
+  labels:
+    app: flask
+  name: flask-app
+--
+  replicas: 1
+  revisionHistoryLimit: 10
+  selector:
+    matchLabels:
+      app: flask
+  strategy:
+--
+  replicas: 1
+  updatedReplicas: 1

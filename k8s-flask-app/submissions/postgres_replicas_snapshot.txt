@@ -1,0 +1,16 @@
+      {"apiVersion":"apps/v1","kind":"Deployment","metadata":{"annotations":{},"labels":{"app":"postgres"},"name":"postgres","namespace":"default"},"spec":{"replicas":1,"selector":{"matchLabels":{"app":"postgres"}},"template":{"metadata":{"labels":{"app":"postgres"}},"spec":{"containers":[{"env":[{"name":"POSTGRES_DB","valueFrom":{"secretKeyRef":{"key":"POSTGRES_DB","name":"postgres-secret"}}},{"name":"POSTGRES_USER","valueFrom":{"secretKeyRef":{"key":"POSTGRES_USER","name":"postgres-secret"}}},{"name":"POSTGRES_PASSWORD","valueFrom":{"secretKeyRef":{"key":"POSTGRES_PASSWORD","name":"postgres-secret"}}}],"image":"postgres:latest","name":"postgres-container","ports":[{"containerPort":5432}],"volumeMounts":[{"mountPath":"/var/lib/postgresql/data","name":"postgres-storage"}]}],"volumes":[{"emptyDir":{},"name":"postgres-storage"}]}}}}
+  creationTimestamp: "2025-03-11T15:18:25Z"
+  generation: 3
+  labels:
+    app: postgres
+  name: postgres
+--
+  replicas: 1
+  revisionHistoryLimit: 10
+  selector:
+    matchLabels:
+      app: postgres
+  strategy:
+--
+  replicas: 1
+  updatedReplicas: 1
